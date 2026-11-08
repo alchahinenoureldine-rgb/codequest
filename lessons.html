@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lessons | CodeQuest</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav>
+    <strong>⚔️ CodeQuest</strong>
+    <a href="index.html">Home</a>
+    <a href="roadmap.html">Roadmap</a>
+    <a href="lessons.html" class="active">Lessons</a>
+    <a href="playground.html">Playground</a>
+    <a href="quiz.html">Quiz</a>
+    <a href="progress.html">Progress</a>
+    <a href="contact.html">Contact</a>
+    <span class="spacer"></span>
+    <span id="xpBadge"></span>
+    <button id="themeBtn">🌓</button>
+  </nav>
+
+  <main>
+    <h2>Lessons</h2>
+
+    <details open>
+      <summary>HTML: Your first page</summary>
+      <p>HTML describes the structure of a page using tags.</p>
+      <pre>&lt;h1&gt;Hello&lt;/h1&gt;
+&lt;p&gt;This is a paragraph.&lt;/p&gt;
+&lt;a href="https://rhu.edu.lb"&gt;A link&lt;/a&gt;</pre>
+    </details>
+
+    <details>
+      <summary>HTML: Lists and images</summary>
+      <p>Use ul and li for lists, and img to show a picture.</p>
+      <pre>&lt;ul&gt;
+  &lt;li&gt;HTML&lt;/li&gt;
+  &lt;li&gt;CSS&lt;/li&gt;
+&lt;/ul&gt;
+&lt;img src="photo.jpg" alt="My photo"&gt;</pre>
+    </details>
+
+    <details>
+      <summary>CSS: Colors and fonts</summary>
+      <p>CSS controls how elements look.</p>
+      <pre>h1 { color: teal; font-size: 2rem; }
+p { background: #eee; padding: 10px; }</pre>
+    </details>
+
+    <details>
+      <summary>CSS: Flexbox layout</summary>
+      <p>Flexbox arranges items in a row or column.</p>
+      <pre>.box { display: flex; gap: 1rem; justify-content: center; }</pre>
+    </details>
+
+    <details>
+      <summary>JavaScript: Variables and functions</summary>
+      <p>Variables store data and functions run reusable code.</p>
+      <pre>const name = "Noureddine";
+function hello() { return "Hi " + name; }
+console.log(hello());</pre>
+    </details>
+
+    <details>
+      <summary>JavaScript: Events</summary>
+      <p>JavaScript makes pages interactive by reacting to user actions.</p>
+      <pre>document.getElementById("b").onclick = () =&gt; alert("Hi!");</pre>
+    </details>
+
+    <br><a class="btn" href="playground.html">Try it in the Playground</a>
+  </main>
+
+  <footer>© 2026 CodeQuest · Noureddine Al Chahine · RHU</footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

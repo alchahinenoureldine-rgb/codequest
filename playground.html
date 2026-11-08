@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Playground | CodeQuest</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav>
+    <strong>⚔️ CodeQuest</strong>
+    <a href="index.html">Home</a>
+    <a href="roadmap.html">Roadmap</a>
+    <a href="lessons.html">Lessons</a>
+    <a href="playground.html" class="active">Playground</a>
+    <a href="quiz.html">Quiz</a>
+    <a href="progress.html">Progress</a>
+    <a href="contact.html">Contact</a>
+    <span class="spacer"></span>
+    <span id="xpBadge"></span>
+    <button id="themeBtn">🌓</button>
+  </nav>
+
+  <main>
+    <h2>Live Code Playground</h2>
+    <div class="editor">
+      <div>
+        <label for="html">HTML</label><textarea id="html"></textarea>
+        <label for="css">CSS</label><textarea id="css"></textarea>
+        <label for="js">JavaScript</label><textarea id="js"></textarea>
+        <button id="reset">Reset</button>
+        <button id="save">Save</button>
+      </div>
+      <iframe id="preview" title="Preview"></iframe>
+    </div>
+  </main>
+
+  <footer>© 2026 CodeQuest · Noureddine Al Chahine · RHU</footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/playground.js"></script>
+</body>
+</html>

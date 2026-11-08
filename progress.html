@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Progress | CodeQuest</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav>
+    <strong>⚔️ CodeQuest</strong>
+    <a href="index.html">Home</a>
+    <a href="roadmap.html">Roadmap</a>
+    <a href="lessons.html">Lessons</a>
+    <a href="playground.html">Playground</a>
+    <a href="quiz.html">Quiz</a>
+    <a href="progress.html" class="active">Progress</a>
+    <a href="contact.html">Contact</a>
+    <span class="spacer"></span>
+    <span id="xpBadge"></span>
+    <button id="themeBtn">🌓</button>
+  </nav>
+
+  <main>
+    <h2>My Progress</h2>
+    <div class="card">
+      <h3 id="levelText"></h3>
+      <div class="bar"><div id="xpBar"></div></div>
+      <p id="xpText"></p>
+    </div>
+    <div class="card" style="margin-top:1rem"><h3>🏅 Badges</h3><div id="badges"></div></div>
+    <div class="card" style="margin-top:1rem"><h3>📊 Quiz scores (%)</h3><div class="chart" id="chart"></div></div>
+    <div class="card" style="margin-top:1rem"><h3>🕘 Quiz history</h3><ul id="history"></ul></div>
+    <br><button id="resetAll">Reset all progress</button>
+  </main>
+
+  <footer>© 2026 CodeQuest · Noureddine Al Chahine · RHU</footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/progress.js"></script>
+</body>
+</html>

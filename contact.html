@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About &amp; Contact | CodeQuest</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav>
+    <strong>⚔️ CodeQuest</strong>
+    <a href="index.html">Home</a>
+    <a href="roadmap.html">Roadmap</a>
+    <a href="lessons.html">Lessons</a>
+    <a href="playground.html">Playground</a>
+    <a href="quiz.html">Quiz</a>
+    <a href="progress.html">Progress</a>
+    <a href="contact.html" class="active">Contact</a>
+    <span class="spacer"></span>
+    <span id="xpBadge"></span>
+    <button id="themeBtn">🌓</button>
+  </nav>
+
+  <main>
+    <h2>About &amp; Contact</h2>
+    <div class="card">
+      <h3>About CodeQuest</h3>
+      <p>CodeQuest is a gamified web development learning platform created by
+      Noureddine Al Chahine (CCE, Rafik Hariri University) for the Web Development course.</p>
+      <p><a href="https://github.com/alchahinenoureldine-rgb/codequest" target="_blank">GitHub repository</a></p>
+    </div>
+
+    <form id="contactForm" class="card" style="margin-top:1rem" novalidate>
+      <label for="name">Name</label>
+      <input id="name" type="text"><div class="error" id="nameErr"></div>
+      <label for="email">Email</label>
+      <input id="email" type="email"><div class="error" id="emailErr"></div>
+      <label for="msg">Message</label>
+      <textarea id="msg" class="field" rows="5"></textarea><div class="error" id="msgErr"></div>
+      <br><button type="submit">Send</button>
+      <div class="success" id="ok"></div>
+    </form>
+  </main>
+
+  <footer>© 2026 CodeQuest · Noureddine Al Chahine · RHU</footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/contact.js"></script>
+</body>
+</html>
