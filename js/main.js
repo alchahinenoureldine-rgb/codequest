@@ -15,7 +15,8 @@ document.getElementById("themeBtn")?.addEventListener("click", () => {
 
 // XP and levels (100 XP per level)
 function getProgress() {
-  return store.get("progress", { xp: 0, badges: [], quizzes: [], levelsDone: [] });
+  const p = store.get("progress", {});
+  return { xp: 0, badges: [], quizzes: [], levelsDone: [], lessonsDone: [], ...p };
 }
 function addXP(amount, badge) {
   const p = getProgress();

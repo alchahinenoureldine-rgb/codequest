@@ -21,56 +21,19 @@
     <button id="themeBtn">🌓</button>
   </nav>
 
-  <main>
+    <main>
     <h2>Lessons</h2>
-
-    <details open>
-      <summary>HTML: Your first page</summary>
-      <p>HTML describes the structure of a page using tags.</p>
-      <pre>&lt;h1&gt;Hello&lt;/h1&gt;
-&lt;p&gt;This is a paragraph.&lt;/p&gt;
-&lt;a href="https://rhu.edu.lb"&gt;A link&lt;/a&gt;</pre>
-    </details>
-
-    <details>
-      <summary>HTML: Lists and images</summary>
-      <p>Use ul and li for lists, and img to show a picture.</p>
-      <pre>&lt;ul&gt;
-  &lt;li&gt;HTML&lt;/li&gt;
-  &lt;li&gt;CSS&lt;/li&gt;
-&lt;/ul&gt;
-&lt;img src="photo.jpg" alt="My photo"&gt;</pre>
-    </details>
-
-    <details>
-      <summary>CSS: Colors and fonts</summary>
-      <p>CSS controls how elements look.</p>
-      <pre>h1 { color: teal; font-size: 2rem; }
-p { background: #eee; padding: 10px; }</pre>
-    </details>
-
-    <details>
-      <summary>CSS: Flexbox layout</summary>
-      <p>Flexbox arranges items in a row or column.</p>
-      <pre>.box { display: flex; gap: 1rem; justify-content: center; }</pre>
-    </details>
-
-    <details>
-      <summary>JavaScript: Variables and functions</summary>
-      <p>Variables store data and functions run reusable code.</p>
-      <pre>const name = "Noureddine";
-function hello() { return "Hi " + name; }
-console.log(hello());</pre>
-    </details>
-
-    <details>
-      <summary>JavaScript: Events</summary>
-      <p>JavaScript makes pages interactive by reacting to user actions.</p>
-      <pre>document.getElementById("b").onclick = () =&gt; alert("Hi!");</pre>
-    </details>
-
-    <br><a class="btn" href="playground.html">Try it in the Playground</a>
+    <p>Each level has 5 lessons. Finish all 5 to unlock the next level.</p>
+    <div id="lessonList"></div>
   </main>
+
+  <footer>© 2026 CodeQuest · Noureddine Al Chahine · RHU</footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/lessons.js"></script>
+</body>
+</html>
 
   <footer>© 2026 CodeQuest · Noureddine Al Chahine · RHU</footer>
 
