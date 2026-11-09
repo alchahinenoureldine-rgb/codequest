@@ -28,3 +28,16 @@ document.getElementById("resetAll").onclick = () => {
     location.reload();
   }
 };
+const mBox = document.getElementById("mastery");
+if (mBox) {
+  LEVELS.forEach(level => {
+    const score = masteryOf(level, p);
+    const t = tierOf(score);
+    const row = document.createElement("div");
+    row.style.margin = ".8rem 0";
+    row.innerHTML = "<strong>" + MASTERY_NAMES[level.id] + "</strong> · " + score + "/100 " +
+      (t >= 0 ? TIERS[t].icon + " " + TIERS[t].name : "") +
+      '<div class="bar mastery"><div style="width:' + score + '%"></div></div>';
+    mBox.appendChild(row);
+  });
+}

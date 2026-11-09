@@ -23,10 +23,12 @@ function completeLesson(levelIndex, lessonId) {
   addXP(10);
   if (allDone) {
     addXP(50, level.title.split(":")[0] + " Done");
-    alert("🎉 " + level.title + " completed! +50 XP. The next level is unlocked.");
+        alert("🎉 " + level.title + " completed! +50 XP. The next level is unlocked.");
   }
+  checkMastery();
   renderLessons();
 }
+
 
 // Optional quick quiz: 5 questions, +2 XP for each new correct answer (best score counts)
 function buildMiniQuiz(lesson) {
@@ -119,6 +121,7 @@ function buildMiniQuiz(lesson) {
       check.hidden = true;
       retry.hidden = false;
       toggle.textContent = label();
+      checkMastery();
     };
     panel.append(check, result, retry);
   }
@@ -140,7 +143,7 @@ function renderLessons() {
     section.className = "level-section";
 
     const title = document.createElement("h3");
-    title.textContent = (unlocked ? "" : "🔒 ") + level.title + " (" + count + "/" + level.lessons.length + ")";
+        title.textContent = (unlocked ? "" : "🔒 ") + level.title + " (" + count + "/" + level.lessons.length + ")" + masteryLabel(level);
     section.appendChild(title);
 
     if (!unlocked) {

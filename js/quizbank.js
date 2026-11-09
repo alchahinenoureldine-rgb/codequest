@@ -72,3 +72,16 @@ fill("js", "Choose the method that adds 'Git' to the end.", "langs.____('Git');"
 fill("css", "Choose the missing value for a 3-column layout.", ".g { display: ____; grid-template-columns: repeat(3, 1fr); }", ["flex", "table", "grid", "column"], 2, "grid-template-columns needs display: grid.");
 fill("css", "Complete the media query for small screens.", "@media (____: 600px) { .menu { display: none; } }", ["width-max", "maxwidth", "max-width", "screen"], 2, "max-width applies up to 600px.");
 fill("js", "Choose the method that saves to the browser.", "localStorage.____('theme', 'dark');", ["getItem", "setItem", "saveItem", "addItem"], 1, "setItem saves; getItem reads.");
+// ---------- Git & Projects (Level 4) ----------
+m("project", "Which command saves a snapshot of your changes locally?", ["git push", "git commit", "git clone", "git pull"], 1, "commit saves locally; push uploads to GitHub.");
+m("project", "Which file is normally the home page of a website?", ["home.css", "main.js", "index.html", "start.txt"], 2, "Servers show index.html by default.");
+m("project", "Where do you enable GitHub Pages?", ["Repository Settings > Pages", "VS Code settings", "Windows settings", "Browser history"], 0, "Settings > Pages, then choose the branch.");
+m("project", "Which command downloads a repository to your computer?", ["git add", "git clone", "git push", "git status"], 1, "git clone copies the repository locally.");
+tf("project", "git add . selects all changed files for the next commit.", true, "The dot means the current folder and everything in it.");
+tf("project", "A website should use a different menu on every page.", false, "Keep the same nav so visitors can move around easily.");
+tf("project", "Spaces or capital letters in file names can break links online.", true, "GitHub Pages treats Main.js and main.js as different files.");
+tf("project", "CSS variables are declared with a -- prefix, like --bg.", true, "They are read with var(--bg).");
+bug("project", "<script src='js/ main.js'></script>", ["The script tag must be in <head>", "A space inside the file path breaks the file name", "src must be href", "alt is missing"], 1, "A space changes the file name, so the browser cannot find it.");
+bug("project", "git comit -m 'Add page'", ["-m is not allowed", "The command is misspelled; use commit", "Quotes must be double", "git needs a dot"], 1, "The command is git commit.");
+fill("project", "Complete the command to upload your commits.", "git ____", ["send", "save", "push", "upload"], 2, "git push uploads commits to GitHub.");
+fill("project", "Complete the CSS variable usage.", "body { background: ____(--bg); }", ["use", "get", "css", "var"], 3, "var(--name) reads a CSS variable.");
