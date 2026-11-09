@@ -1,6 +1,15 @@
 let openLesson = null;
 let firstRender = true;
 
+function shuffleArr(a) {
+  const arr = a.slice();
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
 function completeLesson(levelIndex, lessonId) {
   const level = LEVELS[levelIndex];
   const p = getProgress();
@@ -17,6 +26,103 @@ function completeLesson(levelIndex, lessonId) {
     alert("🎉 " + level.title + " completed! +50 XP. The next level is unlocked.");
   }
   renderLessons();
+}
+
+// Optional quick quiz: 5 questions, +2 XP for each new correct answer (best score counts)
+function buildMiniQuiz(lesson) {
+  const wrap = document.createElement("div");
+  wrap.className = "mini";
+  const data = typeof LESSON_QUIZZES !== "undefined" ? LESSON_QUIZZES[lesson.id] : null;
+  if (!data) return wrap;
+
+  const label = () => {
+    const best = (getProgress().lessonQuiz || {})[lesson.id];
+    return "📝 Quick quiz (optional)" + (best !== undefined ? " · best " + best + "/5" : "");
+  };
+  const toggle = document.createElement("button");
+  toggle.textContent = label();
+  const panel = document.createElement("div");
+  panel.hidden = true;
+  toggle.onclick = () => {
+    panel.hidden = !panel.hidden;
+    if (!panel.hidden && !panel.hasChildNodes()) renderQuiz();
+  };
+  wrap.append(toggle, panel);
+
+  function renderQuiz() {
+    panel.innerHTML = "";
+    const picked = [];
+    const buttons = [];
+    const qs = data.map(item => {
+      const correct = item[1][item[2]];
+      const opts = shuffleArr(item[1]);
+      return { q: item[0], opts: opts, answer: opts.indexOf(correct) };
+    });
+
+    qs.forEach((qq, qi) => {
+      const block = document.createElement("div");
+      block.className = "mq";
+      const h = document.createElement("h4");
+      h.textContent = (qi + 1) + ". " + qq.q;
+      block.appendChild(h);
+      buttons[qi] = [];
+      qq.opts.forEach((text, oi) => {
+        const b = document.createElement("button");
+        b.className = "option";
+        b.textContent = text;
+        b.onclick = () => {
+          picked[qi] = oi;
+          buttons[qi].forEach(x => x.classList.remove("selected"));
+          b.classList.add("selected");
+        };
+        buttons[qi].push(b);
+        block.appendChild(b);
+      });
+      panel.appendChild(block);
+    });
+
+    const result = document.createElement("p");
+    result.className = "explain";
+    result.hidden = true;
+    const retry = document.createElement("button");
+    retry.textContent = "Try again";
+    retry.hidden = true;
+    retry.onclick = renderQuiz;
+    const check = document.createElement("button");
+    check.textContent = "Check answers";
+
+    check.onclick = () => {
+      let score = 0;
+      qs.forEach((qq, qi) => {
+        buttons[qi].forEach((b, oi) => {
+          b.disabled = true;
+          b.classList.remove("selected");
+          if (oi === qq.answer) b.classList.add("correct");
+          else if (oi === picked[qi]) b.classList.add("wrong");
+        });
+        if (picked[qi] === qq.answer) score++;
+      });
+
+      const prog = getProgress();
+      prog.lessonQuiz = prog.lessonQuiz || {};
+      const prev = prog.lessonQuiz[lesson.id] || 0;
+      let gain = 0;
+      if (score > prev) {
+        gain = (score - prev) * 2;
+        prog.lessonQuiz[lesson.id] = score;
+        store.set("progress", prog);
+        addXP(gain, score === 5 ? "Quiz Ace" : null);
+      }
+      result.textContent = "Score: " + score + "/5 · " +
+        (gain ? "+" + gain + " XP" : "no new XP (beat your best score to earn more)");
+      result.hidden = false;
+      check.hidden = true;
+      retry.hidden = false;
+      toggle.textContent = label();
+    };
+    panel.append(check, result, retry);
+  }
+  return wrap;
 }
 
 function renderLessons() {
@@ -67,7 +173,7 @@ function renderLessons() {
       btn.style.marginTop = ".8rem";
       btn.onclick = () => { openLesson = lesson.id; completeLesson(i, lesson.id); };
 
-      d.append(s, text, pre, btn);
+      d.append(s, text, pre, btn, buildMiniQuiz(lesson));
       section.appendChild(d);
     });
 
